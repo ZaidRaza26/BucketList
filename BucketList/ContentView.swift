@@ -34,7 +34,7 @@ struct ContentView: View {
     var body: some View {
         
         ZStack{
-            //if isUnlocked {
+            if isUnlocked {
                 
                 MapView(centerCoordinate: $centerCoordinate, selectedPlace: $selectedPlace, showingPlaceDetails: $showingPlaceDetails, annotations: locations)
                     
@@ -67,17 +67,17 @@ struct ContentView: View {
                         .padding(.trailing)
                     }
                 }
-          //  }
-//            else {
-//                //button here
-//                Button("Unlock Places") {
-//                    self.authenticate()
-//                }
-//                .padding()
-//                .background(Color.blue)
-//                .foregroundColor(.white)
-//                .clipShape(Capsule())
-//            }
+            }
+            else {
+                //button here
+                Button("Unlock Places") {
+                    self.authenticate()
+                }
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .clipShape(Capsule())
+            }
         }
         .onAppear(perform: loadData)
         .alert(isPresented: $showingPlaceDetails){
